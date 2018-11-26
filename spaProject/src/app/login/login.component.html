@@ -1,0 +1,62 @@
+<div class="container">
+  <form action="/action_page.php">
+    <div class="row">
+      <h2 style="text-align:center">Login with Social Media or Manually</h2>
+      <div class="vl">
+        <span class="vl-innertext">or</span>
+      </div>
+
+      <div class="col">
+        <a routerLink="#" class="fb btn">
+          <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+         </a>
+        <a routerLink="#" class="twitter btn">
+          <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+        </a>
+        <a routerLink="#" class="google btn"><i class="fa fa-google fa-fw">
+          </i> Login with Google+
+        </a>
+      </div>
+
+      <div class="col">
+        <div class="hide-md-lg">
+          <p>Or sign in manually:</p>
+        </div>
+        <input type="text"  ngModel
+        #email="ngModel"
+        required
+        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"  
+        
+        name="email" placeholder="EmailID" required>
+        <div *ngIf="email.touched && email.invalid">
+            <div *ngIf="email.errors.required" style="color:red">EmailID required</div>
+            <div *ngIf="email.errors.pattern"  style="color:red">EmailID is not supported</div>
+            </div>
+        <input type="password" ngModel
+        #psw="ngModel"
+        required
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+      
+         name="password" placeholder="Password" required>
+        <div *ngIf="psw.touched && psw.invalid">
+            <div *ngIf="psw.errors.required" style="color:red">Password required</div>
+            <div *ngIf="psw.errors.pattern"  style="color:red">Password is not supported</div>
+          </div> 
+       
+        <input type="submit" routerLink="/home" value="Login">
+      </div>
+      
+    </div>
+  </form>
+</div>
+
+<div class="bottom-container">
+  <div class="row">
+    <div class="col">
+      <a routerLink="/register" style="color:white" class="btn">Sign up</a>
+    </div>
+    <div class="col">
+      <a routerLink="#" style="color:white" class="btn">Forgot password?</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,132 @@
+<div class="signup-form">
+  <form method="post" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <h2>Sign Up</h2>
+  <div class="form-group pass_show">
+      <label for="firstname"><b>FirstName</b></label>
+      <input type="text"
+      ngModel
+      #firstname="ngModel"
+      name="firstname"
+      required
+      minlength="3"
+      maxlength="9"
+      
+      class="form-control"
+      placeholder="First Name">
+      <div *ngIf="firstname.touched && firstname.invalid">
+        <div *ngIf="firstname.errors.required" style="color:red">Field cannot be empty</div>
+        <div *ngIf="firstname.errors.minlength" style="color:red">First name should be atleast 3 characters</div>
+      </div>
+
+    </div>
+     
+    <div class="form-group pass_show">
+      <label><b>LastName</b></label>
+        <input type="text"
+        ngModel
+        #lastname="ngModel"
+        name="lastname"
+        required
+        minlength="3"
+        maxlength="9"
+      
+        class="form-control"
+        placeholder="Last Name">
+        <div *ngIf="lastname.touched && lastname.invalid">
+          <div *ngIf="lastname.errors.required" style="color:red">Field cannot be empty</div>
+          <div *ngIf="lastname.errors.minlength" style="color:red">Last name should be atleast 3 characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email"><span class="glyphicon glyphicon-envelope"></span>  <b>Email</b></label>
+        <input type="email"
+        ngModel
+            #email="ngModel"
+            name="email"
+            required
+            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+            
+            class="form-control"
+            placeholder="EmailID">
+            <div *ngIf="email.touched && email.invalid">
+              <div *ngIf="email.errors.required" style="color:red">Field cannot be empty</div>
+              <div *ngIf="email.errors.pattern" style="color:red">email is not supported</div>               
+            </div>
+      </div>
+      <div class="form-group">
+      <label for="mobileNumber"><span class="glyphicon glyphicon-phone"></span> <b>>MobileNumber</b></label>
+        <input type="text"
+        ngModel
+            #mobile="ngModel"                 
+            name="mobile"
+            required
+            minlength="10"
+            maxlength="10"
+            
+            class="form-control"
+            placeholder="Mobile Number">
+           
+
+            <div *ngIf="mobile.touched && mobile.invalid">
+              <div *ngIf="mobile.errors.required" style="color:red">Field cannot be empty</div>
+              <div *ngIf="mobile.errors.minlength" style="color:red">Mobile number should be 10 digits</div>
+              <div *ngIf="mobile.errors.pattern" style="color:red">mobileno  is not supported</div>
+            </div>
+    </div>
+    <div class="form-group pass_show">
+        <label><b>DOB</b></label>
+        <input type="date"
+        ngModel
+        #dob="ngModel"
+        name="dob"
+        required
+      
+        class="form-control"                
+        placeholder="Date of Birth">
+        <div *ngIf="dob.touched.required " style="color:red">Field cannot be empty</div>
+      </div>
+    <div>
+    <label for="psw"><b>Password</b></label>
+    <input type="password"
+    ngModel
+            #password="ngModel"
+            name="password"
+            required
+            minlength="6"
+            
+            class="form-control"
+            placeholder="Password">
+            <div *ngIf="password.touched && password.invalid">
+              <div *ngIf="password.errors.required" style="color:red">Field cannot be empty</div>
+              <div *ngIf="password.errors.minlength" style="color:red">password should be atleast 6 characters</div>
+            </div>
+  </div>
+  <div class="form-group">
+    <label for="psw"><b>Confirm Password</b></label>
+          <input type="password"
+          appConfirmEqualValidator="password"
+          ngModel
+            #password1="ngModel"
+          
+            name="password1"
+            required
+            minlength="6"
+            class="form-control"
+            placeholder="Confirm Password">
+            <div *ngIf="password1.touched && password1.invalid">
+              <div *ngIf="password1.errors.required" style="color:red">Field cannot be empty</div>
+              <div *ngIf="password1.errors.minlength" style="color:red">password should be atleast 6 characters</div>
+              <div *ngIf="password1.touched && password1.errors?.notEqual && !password1.errors?.required">password and confirm password doesnot match</div>
+            </div>
+      </div>       
+      <div class="form-group">
+    <label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+  </div>
+  <div class="form-group">
+          <button type="submit" routerLink="/login" class="btn btn-primary btn-lg" (click)="registerUser()">Register</button>
+      </div>
+  </form>
+<div class="text-center">Already have an account? <a href="/login">Login here</a></div>
+</div>
+
+  
